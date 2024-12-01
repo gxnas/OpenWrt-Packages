@@ -1,4 +1,4 @@
-name: Sync packages
+name: Auto_Sync_Packages
 
 on:
   push:
