@@ -14,12 +14,12 @@ on:
     inputs:
       packages:
         description: 'packages'
-        required: false
-        default: 'false'	
+        required: true
+        default: 'true'	
 
 jobs:
   build:
-    if: github.event.repository.owner.id == github.event.sender.id || ! github.event.sender.id
+    if: github.event.repository.owner.id == github.event.sender.id || github.event.sender.id == null
     runs-on: ubuntu-latest
 
     name: Update ${{matrix.target}}
