@@ -158,7 +158,7 @@ return baseclass.extend({
 		//['UID'],
 
 		['NETWORK'],
-		//['DSCP'],
+		['DSCP'],
 
 		['RULE-SET'],
 
@@ -218,6 +218,17 @@ return baseclass.extend({
 		['qq'],
 		['random']
 	],
+
+	// thanks to homeproxy
+	CBIStaticList: form.DynamicList.extend({
+		__name__: 'CBI.StaticList',
+
+		renderWidget: function(/* ... */) {
+			var dl = form.DynamicList.prototype.renderWidget.apply(this, arguments);
+			dl.querySelector('.add-item ul > li[data-value="-"]').remove();
+			return dl;
+		}
+	}),
 
 	// thanks to homeproxy
 	calcStringMD5: function(e) {
