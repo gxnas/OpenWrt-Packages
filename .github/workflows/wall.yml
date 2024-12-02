@@ -30,9 +30,8 @@ jobs:
 
     steps:
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@main
       with:
-        token: ${{ secrets.ACCESS_TOKEN }}
         fetch-depth: 0
 
     - name: Initialization environment
@@ -47,7 +46,7 @@ jobs:
         chmod +x .github/diy/${{matrix.target}}.sh
         chmod +x .github/mysh/my.sh
         chmod +x .github/mysh/edit_main.sh        
-        git clone -b ${{matrix.target}} https://github.com/gxnas/openwrt-package.git ${{matrix.target}}
+        git clone -b ${{matrix.target}} https://github.com/gxnas/OpenWrt-Packages.git ${{matrix.target}}
         cd ${{matrix.target}}
         git rm -r --cache * >/dev/null 2>&1 &
         rm -rf `find ./* -maxdepth 0 -type d ! -name "diy" ! -name "mysh"` >/dev/null 2>&1
